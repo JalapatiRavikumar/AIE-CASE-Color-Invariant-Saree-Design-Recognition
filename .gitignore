@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+*.log
+
+# Environments
+.env
+.venv/
+venv/
+env/
+
+# Data — do not commit raw or generated datasets
+data/raw/
+data/interim/
+data/processed/
+
+# Models — do not commit large checkpoints
+models/checkpoints/*.pth
+models/checkpoints/*.pt
+models/embeddings/*.npy
+models/embeddings/*.json
+
+# Results — generated artifacts
+results/
+
+# Downloads — large model binary zip
+downloads/model_checkpoint_and_metadata.zip
+
+# Frontend
+app/frontend/node_modules/
+app/frontend/dist/
+app/frontend/.vite/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker generated
+docker/*.log

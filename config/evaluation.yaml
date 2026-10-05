@@ -1,0 +1,26 @@
+evaluation:
+  # Identification metrics
+  recall_at_k: [1, 5, 10]
+  map_cutoff: 10
+
+  # Verification metrics
+  verification_threshold: null   # null = auto-select at EER
+  roc_auc: true
+  eer: true
+
+  # Gallery / Query split
+  gallery_fraction: 0.5          # fraction of test set used as gallery
+  query_fraction: 0.5
+
+  # Color-invariance benchmark
+  colorway_pairs: true           # cross-colorway same-design pairs
+  color_trap: true               # same-color different-design pairs
+
+  # Latest reported results
+  results:
+    recall_at_1: 0.9874
+    recall_at_5: 1.0000
+    recall_at_10: 1.0000
+    map: 0.7803
+    roc_auc: 0.9866
+    eer: 0.0607

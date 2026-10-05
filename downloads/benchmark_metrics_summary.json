@@ -1,0 +1,1695 @@
+{
+  "cleaning_report": {
+    "total_scanned": 2880,
+    "valid": 2880,
+    "corrupt": 0,
+    "corrupt_files": [],
+    "dry_run": true
+  },
+  "colorway": {
+    "cross_palette_baseline": {
+      "recall@1": 0.994,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "mAP": 0.8999
+    },
+    "mean_perturbed_recall@1": 0.975,
+    "min_perturbed_recall@1": 0.881,
+    "mean_perturbed_recall@5": 0.9982,
+    "mean_perturbed_recall@10": 0.9994,
+    "mean_perturbed_mAP": 0.8819,
+    "perturbation_breakdown": {
+      "original_cross_palette": {
+        "recall@1": 0.994,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mAP": 0.8999
+      },
+      "hue_shift_pos": {
+        "recall@1": 0.9881,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mAP": 0.9032
+      },
+      "hue_shift_neg": {
+        "recall@1": 0.9643,
+        "recall@5": 0.994,
+        "recall@10": 1.0,
+        "mAP": 0.8854
+      },
+      "desaturated_0.3x": {
+        "recall@1": 0.994,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mAP": 0.9093
+      },
+      "oversaturated_1.8x": {
+        "recall@1": 0.994,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mAP": 0.8856
+      },
+      "darkened_0.6x": {
+        "recall@1": 0.9702,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mAP": 0.866
+      },
+      "brightened_1.4x": {
+        "recall@1": 0.9762,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mAP": 0.8744
+      },
+      "low_contrast_0.6x": {
+        "recall@1": 0.9821,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mAP": 0.8882
+      },
+      "high_contrast_1.5x": {
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mAP": 0.8923
+      },
+      "color_jitter_combined": {
+        "recall@1": 0.881,
+        "recall@5": 0.9881,
+        "recall@10": 0.994,
+        "mAP": 0.8209
+      },
+      "grayscale": {
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mAP": 0.8939
+      }
+    }
+  },
+  "color_trap": {
+    "color_trap_accuracy": 0.9465,
+    "same_design_diff_color_recall": 0.949,
+    "diff_design_same_color_rejection": 0.944,
+    "threshold_used": 0.92,
+    "total_trap_pairs": 2000,
+    "positives_tested": 1000,
+    "negatives_tested": 1000,
+    "conclusion": "PASSED: Model correctly relies on weave structure/motifs rather than superficial color matching. Rejection of same-color distractor motifs is robust."
+  },
+  "dataset_inspection": {
+    "dataset_path": "C:\\Users\\rravi\\Downloads\\deeplure\\Color-Invariant Saree Design Recognition\\data\\raw\\handloom_sarees",
+    "total_design_dirs": 360,
+    "total_images": 2880,
+    "total_traditions": 6,
+    "traditions": {
+      "banarasi": {
+        "designs": 60,
+        "images": 480
+      },
+      "chanderi": {
+        "designs": 60,
+        "images": 480
+      },
+      "ikat": {
+        "designs": 60,
+        "images": 480
+      },
+      "jamdani": {
+        "designs": 60,
+        "images": 480
+      },
+      "kanjivaram": {
+        "designs": 60,
+        "images": 480
+      },
+      "patola": {
+        "designs": 60,
+        "images": 480
+      }
+    },
+    "images_per_design": 8,
+    "unique_sizes": [
+      [
+        224,
+        224
+      ]
+    ],
+    "formats": [
+      ".png"
+    ],
+    "corrupt_images": [],
+    "dirs_missing_images": [],
+    "json_issues": [],
+    "supports_retrieval": true,
+    "supports_classification": true,
+    "colorway_structure": "Each design_dir contains 8 colorways (palette_00 to palette_07)",
+    "color_invariance_note": "The dataset IS structured for color-invariant evaluation: each design_id appears in 8 different color palettes. Cross-palette retrieval tests whether the model matches the same design regardless of color.",
+    "dataset_origin": "synthetic_handloom (procedurally generated \u2014 not real photographs)",
+    "images_per_tradition_actual": {
+      "banarasi": 480,
+      "chanderi": 480,
+      "ikat": 480,
+      "jamdani": 480,
+      "kanjivaram": 480,
+      "patola": 480
+    }
+  },
+  "data_leakage": {
+    "status": "PASSED",
+    "leakage_detected": false,
+    "dataset_inspection": {
+      "total_images": 2880,
+      "exact_duplicate_groups": 240,
+      "exact_duplicate_details": {
+        "75981bde3be8c96c626f51d2bbc31df1": [
+          "data/raw/handloom_sarees/kanjivaram_0000/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0020/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0033/palette_00.png"
+        ],
+        "fe09d0446e7d733b60ba1bc87c8f21bb": [
+          "data/raw/handloom_sarees/kanjivaram_0000/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0020/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0033/palette_01.png"
+        ],
+        "7511ccc51d3512f15f1beb5aa89a6aed": [
+          "data/raw/handloom_sarees/kanjivaram_0000/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0020/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0033/palette_02.png"
+        ],
+        "3f4a971a542e30d3a72dcd08fd11f83b": [
+          "data/raw/handloom_sarees/kanjivaram_0000/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0020/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0033/palette_03.png"
+        ],
+        "973d580d6490f9b36ac87a46f6355195": [
+          "data/raw/handloom_sarees/kanjivaram_0000/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0020/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0033/palette_04.png"
+        ],
+        "4cacfad54a991d570b8cb08f388f94f4": [
+          "data/raw/handloom_sarees/kanjivaram_0000/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0020/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0033/palette_05.png"
+        ],
+        "1bd3a19911ad46e870a702e6acb8d163": [
+          "data/raw/handloom_sarees/kanjivaram_0000/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0020/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0033/palette_06.png"
+        ],
+        "373a6129fed2e30458fd4874d4154c87": [
+          "data/raw/handloom_sarees/kanjivaram_0000/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0020/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0033/palette_07.png"
+        ],
+        "412c3aa5c7cd00c34885a82ab6b8a816": [
+          "data/raw/handloom_sarees/kanjivaram_0001/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0004/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0025/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0043/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0054/palette_00.png"
+        ],
+        "f283de11cce45d494043cd383d4a2e40": [
+          "data/raw/handloom_sarees/kanjivaram_0001/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0004/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0025/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0043/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0054/palette_01.png"
+        ],
+        "095e78847a8612251d46fd5d97cdfe3e": [
+          "data/raw/handloom_sarees/kanjivaram_0001/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0004/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0025/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0043/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0054/palette_02.png"
+        ],
+        "ea84a0ee7fa38eb6143e38c814a0b171": [
+          "data/raw/handloom_sarees/kanjivaram_0001/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0004/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0025/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0043/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0054/palette_03.png"
+        ],
+        "4a81ee90c058a7153870085cd750a11d": [
+          "data/raw/handloom_sarees/kanjivaram_0001/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0004/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0025/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0043/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0054/palette_04.png"
+        ],
+        "eb0604f846ff2f362694d16a90d1fe13": [
+          "data/raw/handloom_sarees/kanjivaram_0001/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0004/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0025/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0043/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0054/palette_05.png"
+        ],
+        "c10bd616180ac54916c1e6d90fd52645": [
+          "data/raw/handloom_sarees/kanjivaram_0001/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0004/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0025/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0043/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0054/palette_06.png"
+        ],
+        "ad3e8ede6ebbe396338ef16a3d1b98f2": [
+          "data/raw/handloom_sarees/kanjivaram_0001/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0004/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0025/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0043/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0054/palette_07.png"
+        ],
+        "6d644429f6979e54a7c0915066bf11c5": [
+          "data/raw/handloom_sarees/kanjivaram_0002/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0003/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0018/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0042/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0053/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0056/palette_00.png"
+        ],
+        "663b561a9313992f2831daa7a167f436": [
+          "data/raw/handloom_sarees/kanjivaram_0002/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0003/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0018/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0042/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0053/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0056/palette_01.png"
+        ],
+        "3d71a13b5110f1e4494af8045c28086d": [
+          "data/raw/handloom_sarees/kanjivaram_0002/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0003/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0018/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0042/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0053/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0056/palette_02.png"
+        ],
+        "ef70bfc47943fe1d1877c9192bc8dc86": [
+          "data/raw/handloom_sarees/kanjivaram_0002/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0003/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0018/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0042/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0053/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0056/palette_03.png"
+        ],
+        "4a275cb1f9f6fb4eb5f8b8d9e112448e": [
+          "data/raw/handloom_sarees/kanjivaram_0002/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0003/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0018/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0042/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0053/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0056/palette_04.png"
+        ],
+        "45f5fc72ec9c998a481d77b9eb911a42": [
+          "data/raw/handloom_sarees/kanjivaram_0002/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0003/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0018/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0042/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0053/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0056/palette_05.png"
+        ],
+        "57097715ae679e1dd2f2486368c5509f": [
+          "data/raw/handloom_sarees/kanjivaram_0002/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0003/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0018/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0042/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0053/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0056/palette_06.png"
+        ],
+        "1708597086a1c2c99570c23519c3e678": [
+          "data/raw/handloom_sarees/kanjivaram_0002/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0003/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0018/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0042/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0053/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0056/palette_07.png"
+        ],
+        "7b753b6bf7d91eb3e313c724f797dc2b": [
+          "data/raw/handloom_sarees/kanjivaram_0005/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0038/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0050/palette_00.png"
+        ],
+        "2eadc0013c741bf85f782975a2cef5e6": [
+          "data/raw/handloom_sarees/kanjivaram_0005/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0038/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0050/palette_01.png"
+        ],
+        "fe9b64f3190c350cf0dd640984eda0ae": [
+          "data/raw/handloom_sarees/kanjivaram_0005/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0038/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0050/palette_02.png"
+        ],
+        "2f1cc7039d8c4d83a7e40d3584e61d79": [
+          "data/raw/handloom_sarees/kanjivaram_0005/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0038/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0050/palette_03.png"
+        ],
+        "83389bb16cb811419b91822f978e9674": [
+          "data/raw/handloom_sarees/kanjivaram_0005/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0038/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0050/palette_04.png"
+        ],
+        "89db9b29698058f68c5a100a6711297d": [
+          "data/raw/handloom_sarees/kanjivaram_0005/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0038/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0050/palette_05.png"
+        ],
+        "8f090d90db1442b684d5b6e32d8e6970": [
+          "data/raw/handloom_sarees/kanjivaram_0005/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0038/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0050/palette_06.png"
+        ],
+        "779cef0afba4a6beabdbe001152e54df": [
+          "data/raw/handloom_sarees/kanjivaram_0005/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0038/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0050/palette_07.png"
+        ],
+        "1cbeabe9004566dd2277a007a77c6d54": [
+          "data/raw/handloom_sarees/kanjivaram_0006/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0019/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0049/palette_00.png"
+        ],
+        "0d5eeeaad2e11851b37f7b9ef347bbed": [
+          "data/raw/handloom_sarees/kanjivaram_0006/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0019/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0049/palette_01.png"
+        ],
+        "459d526a624d2d450b7c79b90e0ab987": [
+          "data/raw/handloom_sarees/kanjivaram_0006/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0019/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0049/palette_02.png"
+        ],
+        "0dacde1ac19e10ba99a7e436c02e3e75": [
+          "data/raw/handloom_sarees/kanjivaram_0006/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0019/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0049/palette_03.png"
+        ],
+        "5da3633ca5a723abc96f994f9db1f60c": [
+          "data/raw/handloom_sarees/kanjivaram_0006/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0019/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0049/palette_04.png"
+        ],
+        "92a9444e3cee2241b7a05f0a6de74630": [
+          "data/raw/handloom_sarees/kanjivaram_0006/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0019/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0049/palette_05.png"
+        ],
+        "0e2a8c2cb7f003a0306294dad8161ae1": [
+          "data/raw/handloom_sarees/kanjivaram_0006/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0019/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0049/palette_06.png"
+        ],
+        "3fd517f19b4dc4c8e0416a7e4496db0f": [
+          "data/raw/handloom_sarees/kanjivaram_0006/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0019/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0049/palette_07.png"
+        ],
+        "71204b9322b1117340cecf43eee8a2d8": [
+          "data/raw/handloom_sarees/kanjivaram_0007/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0009/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0030/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0035/palette_00.png"
+        ],
+        "647796dde13cc9f9a209e8769bb4b4cb": [
+          "data/raw/handloom_sarees/kanjivaram_0007/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0009/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0030/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0035/palette_01.png"
+        ],
+        "493e4b6ccf3920533d5318ac36b139da": [
+          "data/raw/handloom_sarees/kanjivaram_0007/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0009/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0030/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0035/palette_02.png"
+        ],
+        "ca63ccc70823b05bded6373721c093b2": [
+          "data/raw/handloom_sarees/kanjivaram_0007/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0009/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0030/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0035/palette_03.png"
+        ],
+        "07636483e649437e21e96aee6d3c6365": [
+          "data/raw/handloom_sarees/kanjivaram_0007/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0009/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0030/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0035/palette_04.png"
+        ],
+        "8a3b9f5b6e5403b3597614a5e1a04062": [
+          "data/raw/handloom_sarees/kanjivaram_0007/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0009/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0030/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0035/palette_05.png"
+        ],
+        "1e1af1bc86339ec0d3a7cd1080462f01": [
+          "data/raw/handloom_sarees/kanjivaram_0007/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0009/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0030/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0035/palette_06.png"
+        ],
+        "fd0889ebbc771c8136eeb1af22792f06": [
+          "data/raw/handloom_sarees/kanjivaram_0007/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0009/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0030/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0035/palette_07.png"
+        ],
+        "f70308427e55a2e9ca40d2c408cbec68": [
+          "data/raw/handloom_sarees/kanjivaram_0008/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0021/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0029/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0031/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0040/palette_00.png"
+        ],
+        "ff94f2fd39466e21f9eeafff3dffcdda": [
+          "data/raw/handloom_sarees/kanjivaram_0008/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0021/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0029/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0031/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0040/palette_01.png"
+        ],
+        "240425209417137de59d96d26ae54c27": [
+          "data/raw/handloom_sarees/kanjivaram_0008/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0021/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0029/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0031/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0040/palette_02.png"
+        ],
+        "866c9f170b119634a98eb2a8218a98b3": [
+          "data/raw/handloom_sarees/kanjivaram_0008/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0021/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0029/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0031/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0040/palette_03.png"
+        ],
+        "69c6554b4e0ba606325acd7aef641512": [
+          "data/raw/handloom_sarees/kanjivaram_0008/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0021/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0029/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0031/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0040/palette_04.png"
+        ],
+        "ba87b3dcba6cd51e4ceef136afb805dd": [
+          "data/raw/handloom_sarees/kanjivaram_0008/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0021/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0029/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0031/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0040/palette_05.png"
+        ],
+        "57ec23ee1fec163d7b73103f6703b54b": [
+          "data/raw/handloom_sarees/kanjivaram_0008/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0021/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0029/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0031/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0040/palette_06.png"
+        ],
+        "80bed686eb4653167fd0303bd4d71886": [
+          "data/raw/handloom_sarees/kanjivaram_0008/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0021/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0029/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0031/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0040/palette_07.png"
+        ],
+        "18a4f8bab25391e7531dce7387061742": [
+          "data/raw/handloom_sarees/kanjivaram_0010/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0012/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0013/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0014/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0016/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0058/palette_00.png"
+        ],
+        "ec0defb31f895bc7da218e9856600cd4": [
+          "data/raw/handloom_sarees/kanjivaram_0010/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0012/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0013/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0014/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0016/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0058/palette_01.png"
+        ],
+        "93de5b9120f98beb951e872e3e154a94": [
+          "data/raw/handloom_sarees/kanjivaram_0010/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0012/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0013/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0014/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0016/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0058/palette_02.png"
+        ],
+        "37029a137a53103660f49d251f8a9082": [
+          "data/raw/handloom_sarees/kanjivaram_0010/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0012/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0013/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0014/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0016/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0058/palette_03.png"
+        ],
+        "a29adbe2d2fca9ec5bc743220f5cd3b9": [
+          "data/raw/handloom_sarees/kanjivaram_0010/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0012/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0013/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0014/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0016/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0058/palette_04.png"
+        ],
+        "8091c20886984f8a99933df33e530267": [
+          "data/raw/handloom_sarees/kanjivaram_0010/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0012/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0013/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0014/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0016/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0058/palette_05.png"
+        ],
+        "831f103d45a7ec49125e27f22c751c93": [
+          "data/raw/handloom_sarees/kanjivaram_0010/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0012/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0013/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0014/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0016/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0058/palette_06.png"
+        ],
+        "50210406ea28c3dcb7215f5f9c1fc4a8": [
+          "data/raw/handloom_sarees/kanjivaram_0010/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0012/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0013/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0014/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0016/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0058/palette_07.png"
+        ],
+        "9972e89fb532418fe820527225463716": [
+          "data/raw/handloom_sarees/kanjivaram_0011/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0023/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0024/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0027/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0045/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0052/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0055/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0059/palette_00.png"
+        ],
+        "ed3c9602e2ece76cd9f7135d90bddacf": [
+          "data/raw/handloom_sarees/kanjivaram_0011/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0023/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0024/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0027/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0045/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0052/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0055/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0059/palette_01.png"
+        ],
+        "33f46fecc9d184b430684f8ae8641d2f": [
+          "data/raw/handloom_sarees/kanjivaram_0011/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0023/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0024/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0027/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0045/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0052/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0055/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0059/palette_02.png"
+        ],
+        "0dfa55fba7a0abad1a73de30841152da": [
+          "data/raw/handloom_sarees/kanjivaram_0011/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0023/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0024/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0027/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0045/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0052/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0055/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0059/palette_03.png"
+        ],
+        "9989f8b3add5ea6ec737c226f57e4336": [
+          "data/raw/handloom_sarees/kanjivaram_0011/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0023/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0024/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0027/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0045/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0052/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0055/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0059/palette_04.png"
+        ],
+        "0b6a5306eb06acfa4981ddf8106d15cd": [
+          "data/raw/handloom_sarees/kanjivaram_0011/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0023/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0024/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0027/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0045/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0052/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0055/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0059/palette_05.png"
+        ],
+        "307c969b412bf05ae8f316c4822363c2": [
+          "data/raw/handloom_sarees/kanjivaram_0011/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0023/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0024/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0027/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0045/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0052/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0055/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0059/palette_06.png"
+        ],
+        "158b32cb16d567f039921f735651f3a0": [
+          "data/raw/handloom_sarees/kanjivaram_0011/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0023/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0024/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0027/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0045/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0052/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0055/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0059/palette_07.png"
+        ],
+        "a2a2c0e43287722defb5223ae09b5d4d": [
+          "data/raw/handloom_sarees/kanjivaram_0015/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0032/palette_00.png"
+        ],
+        "441d14d13906e36ed0058fd280abde49": [
+          "data/raw/handloom_sarees/kanjivaram_0015/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0032/palette_01.png"
+        ],
+        "a2c641bf9364e11217ae7f5a4510763d": [
+          "data/raw/handloom_sarees/kanjivaram_0015/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0032/palette_02.png"
+        ],
+        "17152511c538739cba8ce8181d7d418c": [
+          "data/raw/handloom_sarees/kanjivaram_0015/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0032/palette_03.png"
+        ],
+        "e6106b3d6dc6ee6e63702d2cc515fb55": [
+          "data/raw/handloom_sarees/kanjivaram_0015/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0032/palette_04.png"
+        ],
+        "b21216bd28c4a95fa890c0e1eae32eba": [
+          "data/raw/handloom_sarees/kanjivaram_0015/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0032/palette_05.png"
+        ],
+        "688a82792fd8e3998593ec93171c5aa4": [
+          "data/raw/handloom_sarees/kanjivaram_0015/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0032/palette_06.png"
+        ],
+        "235413048dd016aa55e39eb56033fa76": [
+          "data/raw/handloom_sarees/kanjivaram_0015/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0032/palette_07.png"
+        ],
+        "1f447c7a336b07c3ebc6fe8c9a97bcb5": [
+          "data/raw/handloom_sarees/kanjivaram_0017/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0036/palette_00.png"
+        ],
+        "ae9002f0acee4fc71a2fcbe7d9e65c8b": [
+          "data/raw/handloom_sarees/kanjivaram_0017/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0036/palette_01.png"
+        ],
+        "2d63f63c44533c10d03737cc3c1b15a4": [
+          "data/raw/handloom_sarees/kanjivaram_0017/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0036/palette_02.png"
+        ],
+        "39d81aa36b8c496bfa50020a8f4c3907": [
+          "data/raw/handloom_sarees/kanjivaram_0017/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0036/palette_03.png"
+        ],
+        "e0b9bb6c9fcfcad1eb8e5edac56588f4": [
+          "data/raw/handloom_sarees/kanjivaram_0017/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0036/palette_04.png"
+        ],
+        "4a89d6ce8619356db94c99076891b1ad": [
+          "data/raw/handloom_sarees/kanjivaram_0017/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0036/palette_05.png"
+        ],
+        "768693f32a14804aa0672cbe48c70837": [
+          "data/raw/handloom_sarees/kanjivaram_0017/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0036/palette_06.png"
+        ],
+        "4aa295d4205c33e4563919750726829c": [
+          "data/raw/handloom_sarees/kanjivaram_0017/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0036/palette_07.png"
+        ],
+        "52bf15563cb6a220965efa9d5017e23e": [
+          "data/raw/handloom_sarees/kanjivaram_0022/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0037/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0041/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0044/palette_00.png"
+        ],
+        "8472df7d97bd89dd73632a656b1e60da": [
+          "data/raw/handloom_sarees/kanjivaram_0022/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0037/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0041/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0044/palette_01.png"
+        ],
+        "1a88dd402273b30cd0da82a8e1544fee": [
+          "data/raw/handloom_sarees/kanjivaram_0022/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0037/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0041/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0044/palette_02.png"
+        ],
+        "6866bf384bb92025b99797b3499e837b": [
+          "data/raw/handloom_sarees/kanjivaram_0022/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0037/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0041/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0044/palette_03.png"
+        ],
+        "cd8f298706d6753d50390eac4a9330ac": [
+          "data/raw/handloom_sarees/kanjivaram_0022/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0037/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0041/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0044/palette_04.png"
+        ],
+        "ff4e2281195c36bacef61977190f5817": [
+          "data/raw/handloom_sarees/kanjivaram_0022/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0037/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0041/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0044/palette_05.png"
+        ],
+        "5c06570294b9f7f2af397318621cdf86": [
+          "data/raw/handloom_sarees/kanjivaram_0022/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0037/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0041/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0044/palette_06.png"
+        ],
+        "875f3e97eadba069076bbdef8dd94a36": [
+          "data/raw/handloom_sarees/kanjivaram_0022/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0037/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0041/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0044/palette_07.png"
+        ],
+        "9ad871f1273947ea165a7c5e1b340661": [
+          "data/raw/handloom_sarees/kanjivaram_0026/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0046/palette_00.png"
+        ],
+        "b0ba5bfe3c2ab8252cf3be3c74295eff": [
+          "data/raw/handloom_sarees/kanjivaram_0026/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0046/palette_01.png"
+        ],
+        "03b252139225e68785d0720b384a7e76": [
+          "data/raw/handloom_sarees/kanjivaram_0026/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0046/palette_02.png"
+        ],
+        "2fa0bb096a79fc87fb3cbcf62909c47c": [
+          "data/raw/handloom_sarees/kanjivaram_0026/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0046/palette_03.png"
+        ],
+        "12d365a01f4fde93ec6fe309565488e0": [
+          "data/raw/handloom_sarees/kanjivaram_0026/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0046/palette_04.png"
+        ],
+        "dc10a839658705fe05f9c36bb89fd296": [
+          "data/raw/handloom_sarees/kanjivaram_0026/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0046/palette_05.png"
+        ],
+        "11137dc43805fe496229fb485c3753d7": [
+          "data/raw/handloom_sarees/kanjivaram_0026/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0046/palette_06.png"
+        ],
+        "eb72a07b2cfd0a1aa9c5750c60d8053d": [
+          "data/raw/handloom_sarees/kanjivaram_0026/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0046/palette_07.png"
+        ],
+        "f73fbc102e9544722389fb7a6d10cd0a": [
+          "data/raw/handloom_sarees/kanjivaram_0028/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0034/palette_00.png"
+        ],
+        "172ee2c70374fb59c14230164c09cd7a": [
+          "data/raw/handloom_sarees/kanjivaram_0028/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0034/palette_01.png"
+        ],
+        "f2a0f55c07100df2845d4f8c6807a788": [
+          "data/raw/handloom_sarees/kanjivaram_0028/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0034/palette_02.png"
+        ],
+        "87dd561829163a7e99cb0996d6c06412": [
+          "data/raw/handloom_sarees/kanjivaram_0028/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0034/palette_03.png"
+        ],
+        "a9f5182243f3d5122c7ff76b37ea6396": [
+          "data/raw/handloom_sarees/kanjivaram_0028/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0034/palette_04.png"
+        ],
+        "91db97a7953491ad48be0f7ff5e1ebb5": [
+          "data/raw/handloom_sarees/kanjivaram_0028/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0034/palette_05.png"
+        ],
+        "56b429063b6a433d9a191c3c32e6bef9": [
+          "data/raw/handloom_sarees/kanjivaram_0028/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0034/palette_06.png"
+        ],
+        "7eec821145e2defcbf0b0c8677af7185": [
+          "data/raw/handloom_sarees/kanjivaram_0028/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0034/palette_07.png"
+        ],
+        "d483ed1a4ebfa187d31857d9a449c4a2": [
+          "data/raw/handloom_sarees/kanjivaram_0039/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0047/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0048/palette_00.png",
+          "data/raw/handloom_sarees/kanjivaram_0057/palette_00.png"
+        ],
+        "c111661b82b58a9f327a63c7fbd49006": [
+          "data/raw/handloom_sarees/kanjivaram_0039/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0047/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0048/palette_01.png",
+          "data/raw/handloom_sarees/kanjivaram_0057/palette_01.png"
+        ],
+        "41b680d726a8e7172da7817349d64516": [
+          "data/raw/handloom_sarees/kanjivaram_0039/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0047/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0048/palette_02.png",
+          "data/raw/handloom_sarees/kanjivaram_0057/palette_02.png"
+        ],
+        "8ec13c4030b3bec5a0d70e2dcbd453a8": [
+          "data/raw/handloom_sarees/kanjivaram_0039/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0047/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0048/palette_03.png",
+          "data/raw/handloom_sarees/kanjivaram_0057/palette_03.png"
+        ],
+        "76ca3c69524a551e336caef49793642d": [
+          "data/raw/handloom_sarees/kanjivaram_0039/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0047/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0048/palette_04.png",
+          "data/raw/handloom_sarees/kanjivaram_0057/palette_04.png"
+        ],
+        "74fef6ccdec47f13444ab8890fb3fe73": [
+          "data/raw/handloom_sarees/kanjivaram_0039/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0047/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0048/palette_05.png",
+          "data/raw/handloom_sarees/kanjivaram_0057/palette_05.png"
+        ],
+        "af7dbf495bd684ba268f1f596839bba5": [
+          "data/raw/handloom_sarees/kanjivaram_0039/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0047/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0048/palette_06.png",
+          "data/raw/handloom_sarees/kanjivaram_0057/palette_06.png"
+        ],
+        "71c4892607a0bc5b71a49f37ca82da8d": [
+          "data/raw/handloom_sarees/kanjivaram_0039/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0047/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0048/palette_07.png",
+          "data/raw/handloom_sarees/kanjivaram_0057/palette_07.png"
+        ],
+        "eae74f9bb3f92d001ae90b38a4d3d813": [
+          "data/raw/handloom_sarees/patola_0000/palette_00.png",
+          "data/raw/handloom_sarees/patola_0020/palette_00.png",
+          "data/raw/handloom_sarees/patola_0033/palette_00.png"
+        ],
+        "3474e7d59647fcb0c8b300a6da43e96b": [
+          "data/raw/handloom_sarees/patola_0000/palette_01.png",
+          "data/raw/handloom_sarees/patola_0020/palette_01.png",
+          "data/raw/handloom_sarees/patola_0033/palette_01.png"
+        ],
+        "6dabe3817470e731b1a9a4830008700a": [
+          "data/raw/handloom_sarees/patola_0000/palette_02.png",
+          "data/raw/handloom_sarees/patola_0020/palette_02.png",
+          "data/raw/handloom_sarees/patola_0033/palette_02.png"
+        ],
+        "6997bd5ccbcc82483d053a78e4ac0150": [
+          "data/raw/handloom_sarees/patola_0000/palette_03.png",
+          "data/raw/handloom_sarees/patola_0020/palette_03.png",
+          "data/raw/handloom_sarees/patola_0033/palette_03.png"
+        ],
+        "0032e718965dc070359d1d567aadc4dc": [
+          "data/raw/handloom_sarees/patola_0000/palette_04.png",
+          "data/raw/handloom_sarees/patola_0020/palette_04.png",
+          "data/raw/handloom_sarees/patola_0033/palette_04.png"
+        ],
+        "5839e45918a0f03157b053a1141d5663": [
+          "data/raw/handloom_sarees/patola_0000/palette_05.png",
+          "data/raw/handloom_sarees/patola_0020/palette_05.png",
+          "data/raw/handloom_sarees/patola_0033/palette_05.png"
+        ],
+        "e7cd2ef6afdebcb0c6c1b4a7595cafee": [
+          "data/raw/handloom_sarees/patola_0000/palette_06.png",
+          "data/raw/handloom_sarees/patola_0020/palette_06.png",
+          "data/raw/handloom_sarees/patola_0033/palette_06.png"
+        ],
+        "56e788da7bc1a3eba93d522266274c4e": [
+          "data/raw/handloom_sarees/patola_0000/palette_07.png",
+          "data/raw/handloom_sarees/patola_0020/palette_07.png",
+          "data/raw/handloom_sarees/patola_0033/palette_07.png"
+        ],
+        "2e752d61cdf4e7e1bf09cd2c3ce9d908": [
+          "data/raw/handloom_sarees/patola_0001/palette_00.png",
+          "data/raw/handloom_sarees/patola_0004/palette_00.png",
+          "data/raw/handloom_sarees/patola_0025/palette_00.png",
+          "data/raw/handloom_sarees/patola_0043/palette_00.png",
+          "data/raw/handloom_sarees/patola_0054/palette_00.png"
+        ],
+        "bf9be9db444f1b9a296c830e479197a6": [
+          "data/raw/handloom_sarees/patola_0001/palette_01.png",
+          "data/raw/handloom_sarees/patola_0004/palette_01.png",
+          "data/raw/handloom_sarees/patola_0025/palette_01.png",
+          "data/raw/handloom_sarees/patola_0043/palette_01.png",
+          "data/raw/handloom_sarees/patola_0054/palette_01.png"
+        ],
+        "f42505e013188b3c3a99a77aa28e564b": [
+          "data/raw/handloom_sarees/patola_0001/palette_02.png",
+          "data/raw/handloom_sarees/patola_0004/palette_02.png",
+          "data/raw/handloom_sarees/patola_0025/palette_02.png",
+          "data/raw/handloom_sarees/patola_0043/palette_02.png",
+          "data/raw/handloom_sarees/patola_0054/palette_02.png"
+        ],
+        "5b0d1f380f9ccab752b8ba27af44a718": [
+          "data/raw/handloom_sarees/patola_0001/palette_03.png",
+          "data/raw/handloom_sarees/patola_0004/palette_03.png",
+          "data/raw/handloom_sarees/patola_0025/palette_03.png",
+          "data/raw/handloom_sarees/patola_0043/palette_03.png",
+          "data/raw/handloom_sarees/patola_0054/palette_03.png"
+        ],
+        "65fc992f4c5c6b737037279dc3a8fafd": [
+          "data/raw/handloom_sarees/patola_0001/palette_04.png",
+          "data/raw/handloom_sarees/patola_0004/palette_04.png",
+          "data/raw/handloom_sarees/patola_0025/palette_04.png",
+          "data/raw/handloom_sarees/patola_0043/palette_04.png",
+          "data/raw/handloom_sarees/patola_0054/palette_04.png"
+        ],
+        "45c58b2e8f520972d7405ce80824360b": [
+          "data/raw/handloom_sarees/patola_0001/palette_05.png",
+          "data/raw/handloom_sarees/patola_0004/palette_05.png",
+          "data/raw/handloom_sarees/patola_0025/palette_05.png",
+          "data/raw/handloom_sarees/patola_0043/palette_05.png",
+          "data/raw/handloom_sarees/patola_0054/palette_05.png"
+        ],
+        "80422f381071151ed18c898da24fbd28": [
+          "data/raw/handloom_sarees/patola_0001/palette_06.png",
+          "data/raw/handloom_sarees/patola_0004/palette_06.png",
+          "data/raw/handloom_sarees/patola_0025/palette_06.png",
+          "data/raw/handloom_sarees/patola_0043/palette_06.png",
+          "data/raw/handloom_sarees/patola_0054/palette_06.png"
+        ],
+        "4985d71c869fc096948ea6ca222d80f9": [
+          "data/raw/handloom_sarees/patola_0001/palette_07.png",
+          "data/raw/handloom_sarees/patola_0004/palette_07.png",
+          "data/raw/handloom_sarees/patola_0025/palette_07.png",
+          "data/raw/handloom_sarees/patola_0043/palette_07.png",
+          "data/raw/handloom_sarees/patola_0054/palette_07.png"
+        ],
+        "834174f9e82f955cbc07472ae781b91f": [
+          "data/raw/handloom_sarees/patola_0002/palette_00.png",
+          "data/raw/handloom_sarees/patola_0003/palette_00.png",
+          "data/raw/handloom_sarees/patola_0018/palette_00.png",
+          "data/raw/handloom_sarees/patola_0042/palette_00.png",
+          "data/raw/handloom_sarees/patola_0053/palette_00.png",
+          "data/raw/handloom_sarees/patola_0056/palette_00.png"
+        ],
+        "c7690ebe3cf37e81dec49e03f7d8d74f": [
+          "data/raw/handloom_sarees/patola_0002/palette_01.png",
+          "data/raw/handloom_sarees/patola_0003/palette_01.png",
+          "data/raw/handloom_sarees/patola_0018/palette_01.png",
+          "data/raw/handloom_sarees/patola_0042/palette_01.png",
+          "data/raw/handloom_sarees/patola_0053/palette_01.png",
+          "data/raw/handloom_sarees/patola_0056/palette_01.png"
+        ],
+        "756014e695e7fb367f488c988fed1cfe": [
+          "data/raw/handloom_sarees/patola_0002/palette_02.png",
+          "data/raw/handloom_sarees/patola_0003/palette_02.png",
+          "data/raw/handloom_sarees/patola_0018/palette_02.png",
+          "data/raw/handloom_sarees/patola_0042/palette_02.png",
+          "data/raw/handloom_sarees/patola_0053/palette_02.png",
+          "data/raw/handloom_sarees/patola_0056/palette_02.png"
+        ],
+        "25bdf979ce884bc3ceb60f2c3bb58624": [
+          "data/raw/handloom_sarees/patola_0002/palette_03.png",
+          "data/raw/handloom_sarees/patola_0003/palette_03.png",
+          "data/raw/handloom_sarees/patola_0018/palette_03.png",
+          "data/raw/handloom_sarees/patola_0042/palette_03.png",
+          "data/raw/handloom_sarees/patola_0053/palette_03.png",
+          "data/raw/handloom_sarees/patola_0056/palette_03.png"
+        ],
+        "12e924b750b07103cfdc98e9dadcf773": [
+          "data/raw/handloom_sarees/patola_0002/palette_04.png",
+          "data/raw/handloom_sarees/patola_0003/palette_04.png",
+          "data/raw/handloom_sarees/patola_0018/palette_04.png",
+          "data/raw/handloom_sarees/patola_0042/palette_04.png",
+          "data/raw/handloom_sarees/patola_0053/palette_04.png",
+          "data/raw/handloom_sarees/patola_0056/palette_04.png"
+        ],
+        "c2e116d8d3c2a234a31c129017b3cc54": [
+          "data/raw/handloom_sarees/patola_0002/palette_05.png",
+          "data/raw/handloom_sarees/patola_0003/palette_05.png",
+          "data/raw/handloom_sarees/patola_0018/palette_05.png",
+          "data/raw/handloom_sarees/patola_0042/palette_05.png",
+          "data/raw/handloom_sarees/patola_0053/palette_05.png",
+          "data/raw/handloom_sarees/patola_0056/palette_05.png"
+        ],
+        "3b539e12a6de93e948882b220a9aca91": [
+          "data/raw/handloom_sarees/patola_0002/palette_06.png",
+          "data/raw/handloom_sarees/patola_0003/palette_06.png",
+          "data/raw/handloom_sarees/patola_0018/palette_06.png",
+          "data/raw/handloom_sarees/patola_0042/palette_06.png",
+          "data/raw/handloom_sarees/patola_0053/palette_06.png",
+          "data/raw/handloom_sarees/patola_0056/palette_06.png"
+        ],
+        "37b32de7ba2f272791c76f3f774d7daf": [
+          "data/raw/handloom_sarees/patola_0002/palette_07.png",
+          "data/raw/handloom_sarees/patola_0003/palette_07.png",
+          "data/raw/handloom_sarees/patola_0018/palette_07.png",
+          "data/raw/handloom_sarees/patola_0042/palette_07.png",
+          "data/raw/handloom_sarees/patola_0053/palette_07.png",
+          "data/raw/handloom_sarees/patola_0056/palette_07.png"
+        ],
+        "ea7cb95747e899ce136a0ac416c1dc56": [
+          "data/raw/handloom_sarees/patola_0005/palette_00.png",
+          "data/raw/handloom_sarees/patola_0038/palette_00.png",
+          "data/raw/handloom_sarees/patola_0050/palette_00.png"
+        ],
+        "8ac0c180ccda9c887d7c2bb356885376": [
+          "data/raw/handloom_sarees/patola_0005/palette_01.png",
+          "data/raw/handloom_sarees/patola_0038/palette_01.png",
+          "data/raw/handloom_sarees/patola_0050/palette_01.png"
+        ],
+        "b3b9f160eeb0ffae4a06c277eb6a538c": [
+          "data/raw/handloom_sarees/patola_0005/palette_02.png",
+          "data/raw/handloom_sarees/patola_0038/palette_02.png",
+          "data/raw/handloom_sarees/patola_0050/palette_02.png"
+        ],
+        "efd5c377ad84070f335ac9b987dedf59": [
+          "data/raw/handloom_sarees/patola_0005/palette_03.png",
+          "data/raw/handloom_sarees/patola_0038/palette_03.png",
+          "data/raw/handloom_sarees/patola_0050/palette_03.png"
+        ],
+        "a378639e4a0a4db6bbf99b65b820ff9f": [
+          "data/raw/handloom_sarees/patola_0005/palette_04.png",
+          "data/raw/handloom_sarees/patola_0038/palette_04.png",
+          "data/raw/handloom_sarees/patola_0050/palette_04.png"
+        ],
+        "cfa31035ad9d5f2faa8d9133ecc21b1c": [
+          "data/raw/handloom_sarees/patola_0005/palette_05.png",
+          "data/raw/handloom_sarees/patola_0038/palette_05.png",
+          "data/raw/handloom_sarees/patola_0050/palette_05.png"
+        ],
+        "f875f4fc06ccb581847c24a8c996057c": [
+          "data/raw/handloom_sarees/patola_0005/palette_06.png",
+          "data/raw/handloom_sarees/patola_0038/palette_06.png",
+          "data/raw/handloom_sarees/patola_0050/palette_06.png"
+        ],
+        "ccf7c3d8083fd8fad01d71c72ae35af8": [
+          "data/raw/handloom_sarees/patola_0005/palette_07.png",
+          "data/raw/handloom_sarees/patola_0038/palette_07.png",
+          "data/raw/handloom_sarees/patola_0050/palette_07.png"
+        ],
+        "7cf26d4e78d8c4f97748e55b75842641": [
+          "data/raw/handloom_sarees/patola_0006/palette_00.png",
+          "data/raw/handloom_sarees/patola_0019/palette_00.png",
+          "data/raw/handloom_sarees/patola_0049/palette_00.png"
+        ],
+        "0fc133c557d27e58335d112d5c8c799d": [
+          "data/raw/handloom_sarees/patola_0006/palette_01.png",
+          "data/raw/handloom_sarees/patola_0019/palette_01.png",
+          "data/raw/handloom_sarees/patola_0049/palette_01.png"
+        ],
+        "a657d1426aa5fc4feab92cc9fb38fa1d": [
+          "data/raw/handloom_sarees/patola_0006/palette_02.png",
+          "data/raw/handloom_sarees/patola_0019/palette_02.png",
+          "data/raw/handloom_sarees/patola_0049/palette_02.png"
+        ],
+        "7bef94b837ed48628bbd8b1d61b6df20": [
+          "data/raw/handloom_sarees/patola_0006/palette_03.png",
+          "data/raw/handloom_sarees/patola_0019/palette_03.png",
+          "data/raw/handloom_sarees/patola_0049/palette_03.png"
+        ],
+        "0d5dbff38391f9436e8c53928d923731": [
+          "data/raw/handloom_sarees/patola_0006/palette_04.png",
+          "data/raw/handloom_sarees/patola_0019/palette_04.png",
+          "data/raw/handloom_sarees/patola_0049/palette_04.png"
+        ],
+        "7e45b6f87b78fbceadab698b06067e87": [
+          "data/raw/handloom_sarees/patola_0006/palette_05.png",
+          "data/raw/handloom_sarees/patola_0019/palette_05.png",
+          "data/raw/handloom_sarees/patola_0049/palette_05.png"
+        ],
+        "4890a79265e5015e0b864ec7b9385075": [
+          "data/raw/handloom_sarees/patola_0006/palette_06.png",
+          "data/raw/handloom_sarees/patola_0019/palette_06.png",
+          "data/raw/handloom_sarees/patola_0049/palette_06.png"
+        ],
+        "716fbc43d3ff1bd5254a69b113523135": [
+          "data/raw/handloom_sarees/patola_0006/palette_07.png",
+          "data/raw/handloom_sarees/patola_0019/palette_07.png",
+          "data/raw/handloom_sarees/patola_0049/palette_07.png"
+        ],
+        "6cd189f89004c43247c9aad8dc52d50b": [
+          "data/raw/handloom_sarees/patola_0007/palette_00.png",
+          "data/raw/handloom_sarees/patola_0009/palette_00.png",
+          "data/raw/handloom_sarees/patola_0030/palette_00.png",
+          "data/raw/handloom_sarees/patola_0035/palette_00.png"
+        ],
+        "e639280c769c0d2e930cc5a352ddf6b8": [
+          "data/raw/handloom_sarees/patola_0007/palette_01.png",
+          "data/raw/handloom_sarees/patola_0009/palette_01.png",
+          "data/raw/handloom_sarees/patola_0030/palette_01.png",
+          "data/raw/handloom_sarees/patola_0035/palette_01.png"
+        ],
+        "856c0a493a7504fd8b94037aef5c8d17": [
+          "data/raw/handloom_sarees/patola_0007/palette_02.png",
+          "data/raw/handloom_sarees/patola_0009/palette_02.png",
+          "data/raw/handloom_sarees/patola_0030/palette_02.png",
+          "data/raw/handloom_sarees/patola_0035/palette_02.png"
+        ],
+        "6a92a765a389e6fc93283f4e21975d2a": [
+          "data/raw/handloom_sarees/patola_0007/palette_03.png",
+          "data/raw/handloom_sarees/patola_0009/palette_03.png",
+          "data/raw/handloom_sarees/patola_0030/palette_03.png",
+          "data/raw/handloom_sarees/patola_0035/palette_03.png"
+        ],
+        "a8da8732969746589d23db159fa5feb9": [
+          "data/raw/handloom_sarees/patola_0007/palette_04.png",
+          "data/raw/handloom_sarees/patola_0009/palette_04.png",
+          "data/raw/handloom_sarees/patola_0030/palette_04.png",
+          "data/raw/handloom_sarees/patola_0035/palette_04.png"
+        ],
+        "697e13783b2fd44872dd78750102db45": [
+          "data/raw/handloom_sarees/patola_0007/palette_05.png",
+          "data/raw/handloom_sarees/patola_0009/palette_05.png",
+          "data/raw/handloom_sarees/patola_0030/palette_05.png",
+          "data/raw/handloom_sarees/patola_0035/palette_05.png"
+        ],
+        "70e076e23c2e1edfaead2ebfb944b445": [
+          "data/raw/handloom_sarees/patola_0007/palette_06.png",
+          "data/raw/handloom_sarees/patola_0009/palette_06.png",
+          "data/raw/handloom_sarees/patola_0030/palette_06.png",
+          "data/raw/handloom_sarees/patola_0035/palette_06.png"
+        ],
+        "24e04d96f00c80100cf56c35db3946de": [
+          "data/raw/handloom_sarees/patola_0007/palette_07.png",
+          "data/raw/handloom_sarees/patola_0009/palette_07.png",
+          "data/raw/handloom_sarees/patola_0030/palette_07.png",
+          "data/raw/handloom_sarees/patola_0035/palette_07.png"
+        ],
+        "7bcb537ffc2e0581e540095b203dd2d9": [
+          "data/raw/handloom_sarees/patola_0008/palette_00.png",
+          "data/raw/handloom_sarees/patola_0021/palette_00.png",
+          "data/raw/handloom_sarees/patola_0029/palette_00.png",
+          "data/raw/handloom_sarees/patola_0031/palette_00.png",
+          "data/raw/handloom_sarees/patola_0040/palette_00.png"
+        ],
+        "6524d1df4a4a5c376de34f18c96d07d9": [
+          "data/raw/handloom_sarees/patola_0008/palette_01.png",
+          "data/raw/handloom_sarees/patola_0021/palette_01.png",
+          "data/raw/handloom_sarees/patola_0029/palette_01.png",
+          "data/raw/handloom_sarees/patola_0031/palette_01.png",
+          "data/raw/handloom_sarees/patola_0040/palette_01.png"
+        ],
+        "f8c3247858a2e780037fc5382c712425": [
+          "data/raw/handloom_sarees/patola_0008/palette_02.png",
+          "data/raw/handloom_sarees/patola_0021/palette_02.png",
+          "data/raw/handloom_sarees/patola_0029/palette_02.png",
+          "data/raw/handloom_sarees/patola_0031/palette_02.png",
+          "data/raw/handloom_sarees/patola_0040/palette_02.png"
+        ],
+        "3836837d73973ceda5e98442fbb35eb5": [
+          "data/raw/handloom_sarees/patola_0008/palette_03.png",
+          "data/raw/handloom_sarees/patola_0021/palette_03.png",
+          "data/raw/handloom_sarees/patola_0029/palette_03.png",
+          "data/raw/handloom_sarees/patola_0031/palette_03.png",
+          "data/raw/handloom_sarees/patola_0040/palette_03.png"
+        ],
+        "206ff259ae21822920600ee95d5d97b7": [
+          "data/raw/handloom_sarees/patola_0008/palette_04.png",
+          "data/raw/handloom_sarees/patola_0021/palette_04.png",
+          "data/raw/handloom_sarees/patola_0029/palette_04.png",
+          "data/raw/handloom_sarees/patola_0031/palette_04.png",
+          "data/raw/handloom_sarees/patola_0040/palette_04.png"
+        ],
+        "2240db129725a4bf9476f63885b90945": [
+          "data/raw/handloom_sarees/patola_0008/palette_05.png",
+          "data/raw/handloom_sarees/patola_0021/palette_05.png",
+          "data/raw/handloom_sarees/patola_0029/palette_05.png",
+          "data/raw/handloom_sarees/patola_0031/palette_05.png",
+          "data/raw/handloom_sarees/patola_0040/palette_05.png"
+        ],
+        "e4ab8f48431dc28f2720cd977a2f9e1b": [
+          "data/raw/handloom_sarees/patola_0008/palette_06.png",
+          "data/raw/handloom_sarees/patola_0021/palette_06.png",
+          "data/raw/handloom_sarees/patola_0029/palette_06.png",
+          "data/raw/handloom_sarees/patola_0031/palette_06.png",
+          "data/raw/handloom_sarees/patola_0040/palette_06.png"
+        ],
+        "bf5a046b4eeecd27f2840667696baa7d": [
+          "data/raw/handloom_sarees/patola_0008/palette_07.png",
+          "data/raw/handloom_sarees/patola_0021/palette_07.png",
+          "data/raw/handloom_sarees/patola_0029/palette_07.png",
+          "data/raw/handloom_sarees/patola_0031/palette_07.png",
+          "data/raw/handloom_sarees/patola_0040/palette_07.png"
+        ],
+        "e12f9cdfaaa05a6adcd69056aa2eff98": [
+          "data/raw/handloom_sarees/patola_0010/palette_00.png",
+          "data/raw/handloom_sarees/patola_0012/palette_00.png",
+          "data/raw/handloom_sarees/patola_0013/palette_00.png",
+          "data/raw/handloom_sarees/patola_0014/palette_00.png",
+          "data/raw/handloom_sarees/patola_0016/palette_00.png",
+          "data/raw/handloom_sarees/patola_0058/palette_00.png"
+        ],
+        "226463d08c3541c9b53259fda8eb23c3": [
+          "data/raw/handloom_sarees/patola_0010/palette_01.png",
+          "data/raw/handloom_sarees/patola_0012/palette_01.png",
+          "data/raw/handloom_sarees/patola_0013/palette_01.png",
+          "data/raw/handloom_sarees/patola_0014/palette_01.png",
+          "data/raw/handloom_sarees/patola_0016/palette_01.png",
+          "data/raw/handloom_sarees/patola_0058/palette_01.png"
+        ],
+        "df3788c69984d581d7202619973a5247": [
+          "data/raw/handloom_sarees/patola_0010/palette_02.png",
+          "data/raw/handloom_sarees/patola_0012/palette_02.png",
+          "data/raw/handloom_sarees/patola_0013/palette_02.png",
+          "data/raw/handloom_sarees/patola_0014/palette_02.png",
+          "data/raw/handloom_sarees/patola_0016/palette_02.png",
+          "data/raw/handloom_sarees/patola_0058/palette_02.png"
+        ],
+        "b410668464fb97ed7c321196a3b1f18f": [
+          "data/raw/handloom_sarees/patola_0010/palette_03.png",
+          "data/raw/handloom_sarees/patola_0012/palette_03.png",
+          "data/raw/handloom_sarees/patola_0013/palette_03.png",
+          "data/raw/handloom_sarees/patola_0014/palette_03.png",
+          "data/raw/handloom_sarees/patola_0016/palette_03.png",
+          "data/raw/handloom_sarees/patola_0058/palette_03.png"
+        ],
+        "cbd3a5822215360ee78c144464b31b41": [
+          "data/raw/handloom_sarees/patola_0010/palette_04.png",
+          "data/raw/handloom_sarees/patola_0012/palette_04.png",
+          "data/raw/handloom_sarees/patola_0013/palette_04.png",
+          "data/raw/handloom_sarees/patola_0014/palette_04.png",
+          "data/raw/handloom_sarees/patola_0016/palette_04.png",
+          "data/raw/handloom_sarees/patola_0058/palette_04.png"
+        ],
+        "f647f38d99726d0e811f6b726250e769": [
+          "data/raw/handloom_sarees/patola_0010/palette_05.png",
+          "data/raw/handloom_sarees/patola_0012/palette_05.png",
+          "data/raw/handloom_sarees/patola_0013/palette_05.png",
+          "data/raw/handloom_sarees/patola_0014/palette_05.png",
+          "data/raw/handloom_sarees/patola_0016/palette_05.png",
+          "data/raw/handloom_sarees/patola_0058/palette_05.png"
+        ],
+        "0025bc634fceae3bbf9ef37e7ae9c7fa": [
+          "data/raw/handloom_sarees/patola_0010/palette_06.png",
+          "data/raw/handloom_sarees/patola_0012/palette_06.png",
+          "data/raw/handloom_sarees/patola_0013/palette_06.png",
+          "data/raw/handloom_sarees/patola_0014/palette_06.png",
+          "data/raw/handloom_sarees/patola_0016/palette_06.png",
+          "data/raw/handloom_sarees/patola_0058/palette_06.png"
+        ],
+        "f9c1247598bbbbd7f6aa2415fb31dc67": [
+          "data/raw/handloom_sarees/patola_0010/palette_07.png",
+          "data/raw/handloom_sarees/patola_0012/palette_07.png",
+          "data/raw/handloom_sarees/patola_0013/palette_07.png",
+          "data/raw/handloom_sarees/patola_0014/palette_07.png",
+          "data/raw/handloom_sarees/patola_0016/palette_07.png",
+          "data/raw/handloom_sarees/patola_0058/palette_07.png"
+        ],
+        "49eac233ce6d1b035c47ed5d85ad4df3": [
+          "data/raw/handloom_sarees/patola_0011/palette_00.png",
+          "data/raw/handloom_sarees/patola_0023/palette_00.png",
+          "data/raw/handloom_sarees/patola_0024/palette_00.png",
+          "data/raw/handloom_sarees/patola_0027/palette_00.png",
+          "data/raw/handloom_sarees/patola_0045/palette_00.png",
+          "data/raw/handloom_sarees/patola_0052/palette_00.png",
+          "data/raw/handloom_sarees/patola_0055/palette_00.png",
+          "data/raw/handloom_sarees/patola_0059/palette_00.png"
+        ],
+        "1074149da7911dd922a81017f831363b": [
+          "data/raw/handloom_sarees/patola_0011/palette_01.png",
+          "data/raw/handloom_sarees/patola_0023/palette_01.png",
+          "data/raw/handloom_sarees/patola_0024/palette_01.png",
+          "data/raw/handloom_sarees/patola_0027/palette_01.png",
+          "data/raw/handloom_sarees/patola_0045/palette_01.png",
+          "data/raw/handloom_sarees/patola_0052/palette_01.png",
+          "data/raw/handloom_sarees/patola_0055/palette_01.png",
+          "data/raw/handloom_sarees/patola_0059/palette_01.png"
+        ],
+        "f19937afbd9eb673e4308f5d29b58552": [
+          "data/raw/handloom_sarees/patola_0011/palette_02.png",
+          "data/raw/handloom_sarees/patola_0023/palette_02.png",
+          "data/raw/handloom_sarees/patola_0024/palette_02.png",
+          "data/raw/handloom_sarees/patola_0027/palette_02.png",
+          "data/raw/handloom_sarees/patola_0045/palette_02.png",
+          "data/raw/handloom_sarees/patola_0052/palette_02.png",
+          "data/raw/handloom_sarees/patola_0055/palette_02.png",
+          "data/raw/handloom_sarees/patola_0059/palette_02.png"
+        ],
+        "1e89b23453105967fdaf55da474f8ae2": [
+          "data/raw/handloom_sarees/patola_0011/palette_03.png",
+          "data/raw/handloom_sarees/patola_0023/palette_03.png",
+          "data/raw/handloom_sarees/patola_0024/palette_03.png",
+          "data/raw/handloom_sarees/patola_0027/palette_03.png",
+          "data/raw/handloom_sarees/patola_0045/palette_03.png",
+          "data/raw/handloom_sarees/patola_0052/palette_03.png",
+          "data/raw/handloom_sarees/patola_0055/palette_03.png",
+          "data/raw/handloom_sarees/patola_0059/palette_03.png"
+        ],
+        "6c1f89e61d84716f43299c8dd5b89fa6": [
+          "data/raw/handloom_sarees/patola_0011/palette_04.png",
+          "data/raw/handloom_sarees/patola_0023/palette_04.png",
+          "data/raw/handloom_sarees/patola_0024/palette_04.png",
+          "data/raw/handloom_sarees/patola_0027/palette_04.png",
+          "data/raw/handloom_sarees/patola_0045/palette_04.png",
+          "data/raw/handloom_sarees/patola_0052/palette_04.png",
+          "data/raw/handloom_sarees/patola_0055/palette_04.png",
+          "data/raw/handloom_sarees/patola_0059/palette_04.png"
+        ],
+        "bb5f421ce4246fe5088cc7701f5f6d95": [
+          "data/raw/handloom_sarees/patola_0011/palette_05.png",
+          "data/raw/handloom_sarees/patola_0023/palette_05.png",
+          "data/raw/handloom_sarees/patola_0024/palette_05.png",
+          "data/raw/handloom_sarees/patola_0027/palette_05.png",
+          "data/raw/handloom_sarees/patola_0045/palette_05.png",
+          "data/raw/handloom_sarees/patola_0052/palette_05.png",
+          "data/raw/handloom_sarees/patola_0055/palette_05.png",
+          "data/raw/handloom_sarees/patola_0059/palette_05.png"
+        ],
+        "54d3500aff949cb91801d8085799f096": [
+          "data/raw/handloom_sarees/patola_0011/palette_06.png",
+          "data/raw/handloom_sarees/patola_0023/palette_06.png",
+          "data/raw/handloom_sarees/patola_0024/palette_06.png",
+          "data/raw/handloom_sarees/patola_0027/palette_06.png",
+          "data/raw/handloom_sarees/patola_0045/palette_06.png",
+          "data/raw/handloom_sarees/patola_0052/palette_06.png",
+          "data/raw/handloom_sarees/patola_0055/palette_06.png",
+          "data/raw/handloom_sarees/patola_0059/palette_06.png"
+        ],
+        "45b9a8f2158c26370a78626352f3b004": [
+          "data/raw/handloom_sarees/patola_0011/palette_07.png",
+          "data/raw/handloom_sarees/patola_0023/palette_07.png",
+          "data/raw/handloom_sarees/patola_0024/palette_07.png",
+          "data/raw/handloom_sarees/patola_0027/palette_07.png",
+          "data/raw/handloom_sarees/patola_0045/palette_07.png",
+          "data/raw/handloom_sarees/patola_0052/palette_07.png",
+          "data/raw/handloom_sarees/patola_0055/palette_07.png",
+          "data/raw/handloom_sarees/patola_0059/palette_07.png"
+        ],
+        "2e74b26be8b8882bb84d04fed267bd5f": [
+          "data/raw/handloom_sarees/patola_0015/palette_00.png",
+          "data/raw/handloom_sarees/patola_0032/palette_00.png"
+        ],
+        "35a0439b83642867d82078390c765f14": [
+          "data/raw/handloom_sarees/patola_0015/palette_01.png",
+          "data/raw/handloom_sarees/patola_0032/palette_01.png"
+        ],
+        "f208f2cfdf5679ee631c38a56d05a8d2": [
+          "data/raw/handloom_sarees/patola_0015/palette_02.png",
+          "data/raw/handloom_sarees/patola_0032/palette_02.png"
+        ],
+        "97221828236229af19b0278baa4c4fd4": [
+          "data/raw/handloom_sarees/patola_0015/palette_03.png",
+          "data/raw/handloom_sarees/patola_0032/palette_03.png"
+        ],
+        "0d8243edec79dac920901a67f4a1498b": [
+          "data/raw/handloom_sarees/patola_0015/palette_04.png",
+          "data/raw/handloom_sarees/patola_0032/palette_04.png"
+        ],
+        "e535d2b79150c5fda588707dbde5ec75": [
+          "data/raw/handloom_sarees/patola_0015/palette_05.png",
+          "data/raw/handloom_sarees/patola_0032/palette_05.png"
+        ],
+        "7ded3874facb865c7e6c5dd123671f5a": [
+          "data/raw/handloom_sarees/patola_0015/palette_06.png",
+          "data/raw/handloom_sarees/patola_0032/palette_06.png"
+        ],
+        "cbffde93758ce49ffadfa030ae886be7": [
+          "data/raw/handloom_sarees/patola_0015/palette_07.png",
+          "data/raw/handloom_sarees/patola_0032/palette_07.png"
+        ],
+        "874f87aad7ed7d45fccc8925e6b055f5": [
+          "data/raw/handloom_sarees/patola_0017/palette_00.png",
+          "data/raw/handloom_sarees/patola_0036/palette_00.png"
+        ],
+        "21ee660da2535b88196c63857bcb1c4f": [
+          "data/raw/handloom_sarees/patola_0017/palette_01.png",
+          "data/raw/handloom_sarees/patola_0036/palette_01.png"
+        ],
+        "4a30695313502d04d489ce32e2bb1d34": [
+          "data/raw/handloom_sarees/patola_0017/palette_02.png",
+          "data/raw/handloom_sarees/patola_0036/palette_02.png"
+        ],
+        "971f06de26f3b385632c00597c78861f": [
+          "data/raw/handloom_sarees/patola_0017/palette_03.png",
+          "data/raw/handloom_sarees/patola_0036/palette_03.png"
+        ],
+        "eefcfc49f79af25872a5c3ca83137c61": [
+          "data/raw/handloom_sarees/patola_0017/palette_04.png",
+          "data/raw/handloom_sarees/patola_0036/palette_04.png"
+        ],
+        "fa493d8b12ce9bad0045bc6c7b86f01e": [
+          "data/raw/handloom_sarees/patola_0017/palette_05.png",
+          "data/raw/handloom_sarees/patola_0036/palette_05.png"
+        ],
+        "9c7a2680232370df32045cd4a42e7348": [
+          "data/raw/handloom_sarees/patola_0017/palette_06.png",
+          "data/raw/handloom_sarees/patola_0036/palette_06.png"
+        ],
+        "d07c38b35bc96e1cbecbe3be8d2069cd": [
+          "data/raw/handloom_sarees/patola_0017/palette_07.png",
+          "data/raw/handloom_sarees/patola_0036/palette_07.png"
+        ],
+        "84434192f31cb9f95788e02afb0341f9": [
+          "data/raw/handloom_sarees/patola_0022/palette_00.png",
+          "data/raw/handloom_sarees/patola_0037/palette_00.png",
+          "data/raw/handloom_sarees/patola_0041/palette_00.png",
+          "data/raw/handloom_sarees/patola_0044/palette_00.png"
+        ],
+        "4ffe44c98b203eecbdfab0ee76d2651b": [
+          "data/raw/handloom_sarees/patola_0022/palette_01.png",
+          "data/raw/handloom_sarees/patola_0037/palette_01.png",
+          "data/raw/handloom_sarees/patola_0041/palette_01.png",
+          "data/raw/handloom_sarees/patola_0044/palette_01.png"
+        ],
+        "54d2274f887bc8f35d0934992c4fc72d": [
+          "data/raw/handloom_sarees/patola_0022/palette_02.png",
+          "data/raw/handloom_sarees/patola_0037/palette_02.png",
+          "data/raw/handloom_sarees/patola_0041/palette_02.png",
+          "data/raw/handloom_sarees/patola_0044/palette_02.png"
+        ],
+        "a8093cd98de2689585263e6988faa644": [
+          "data/raw/handloom_sarees/patola_0022/palette_03.png",
+          "data/raw/handloom_sarees/patola_0037/palette_03.png",
+          "data/raw/handloom_sarees/patola_0041/palette_03.png",
+          "data/raw/handloom_sarees/patola_0044/palette_03.png"
+        ],
+        "2bd14832505632a09c0e3b703ce617c0": [
+          "data/raw/handloom_sarees/patola_0022/palette_04.png",
+          "data/raw/handloom_sarees/patola_0037/palette_04.png",
+          "data/raw/handloom_sarees/patola_0041/palette_04.png",
+          "data/raw/handloom_sarees/patola_0044/palette_04.png"
+        ],
+        "8457a7de4d5242114373cb57e1062c88": [
+          "data/raw/handloom_sarees/patola_0022/palette_05.png",
+          "data/raw/handloom_sarees/patola_0037/palette_05.png",
+          "data/raw/handloom_sarees/patola_0041/palette_05.png",
+          "data/raw/handloom_sarees/patola_0044/palette_05.png"
+        ],
+        "bc40887aa399e90275c2ff1370bc623d": [
+          "data/raw/handloom_sarees/patola_0022/palette_06.png",
+          "data/raw/handloom_sarees/patola_0037/palette_06.png",
+          "data/raw/handloom_sarees/patola_0041/palette_06.png",
+          "data/raw/handloom_sarees/patola_0044/palette_06.png"
+        ],
+        "b4e8d7fa31bb9a722cc93230abdbf586": [
+          "data/raw/handloom_sarees/patola_0022/palette_07.png",
+          "data/raw/handloom_sarees/patola_0037/palette_07.png",
+          "data/raw/handloom_sarees/patola_0041/palette_07.png",
+          "data/raw/handloom_sarees/patola_0044/palette_07.png"
+        ],
+        "c082db174b6cdcc1a695983173e84a19": [
+          "data/raw/handloom_sarees/patola_0026/palette_00.png",
+          "data/raw/handloom_sarees/patola_0046/palette_00.png"
+        ],
+        "880ac4faa0b00278088d785571198fb1": [
+          "data/raw/handloom_sarees/patola_0026/palette_01.png",
+          "data/raw/handloom_sarees/patola_0046/palette_01.png"
+        ],
+        "ad7a3fb09121c67e9b02c3b0bc1f6fa9": [
+          "data/raw/handloom_sarees/patola_0026/palette_02.png",
+          "data/raw/handloom_sarees/patola_0046/palette_02.png"
+        ],
+        "83685020fdf42f1aceb0b4b1f33bf4d4": [
+          "data/raw/handloom_sarees/patola_0026/palette_03.png",
+          "data/raw/handloom_sarees/patola_0046/palette_03.png"
+        ],
+        "9f59d44533b0e846b1ae498ee73cf300": [
+          "data/raw/handloom_sarees/patola_0026/palette_04.png",
+          "data/raw/handloom_sarees/patola_0046/palette_04.png"
+        ],
+        "756511d74ba25ae773ab9586017c8cf1": [
+          "data/raw/handloom_sarees/patola_0026/palette_05.png",
+          "data/raw/handloom_sarees/patola_0046/palette_05.png"
+        ],
+        "91e2992dfedc6471149aa9eeedaa6b2d": [
+          "data/raw/handloom_sarees/patola_0026/palette_06.png",
+          "data/raw/handloom_sarees/patola_0046/palette_06.png"
+        ],
+        "935ba802cff2370b86a6ff00fda44a0f": [
+          "data/raw/handloom_sarees/patola_0026/palette_07.png",
+          "data/raw/handloom_sarees/patola_0046/palette_07.png"
+        ],
+        "fe6240a75376a68e0c08bda17c7e703f": [
+          "data/raw/handloom_sarees/patola_0028/palette_00.png",
+          "data/raw/handloom_sarees/patola_0034/palette_00.png"
+        ],
+        "2617c521911ea77ce4239b0c30005d08": [
+          "data/raw/handloom_sarees/patola_0028/palette_01.png",
+          "data/raw/handloom_sarees/patola_0034/palette_01.png"
+        ],
+        "9ba33f59daf34ea0884ebe972e9015ad": [
+          "data/raw/handloom_sarees/patola_0028/palette_02.png",
+          "data/raw/handloom_sarees/patola_0034/palette_02.png"
+        ],
+        "3fccb59ce206aece0d1f91bc0533a6f0": [
+          "data/raw/handloom_sarees/patola_0028/palette_03.png",
+          "data/raw/handloom_sarees/patola_0034/palette_03.png"
+        ],
+        "1cb7bf870eac1adcb7cf3bb8d31b811a": [
+          "data/raw/handloom_sarees/patola_0028/palette_04.png",
+          "data/raw/handloom_sarees/patola_0034/palette_04.png"
+        ],
+        "cb99d8b9e5a19536d5efbabde3c72fa0": [
+          "data/raw/handloom_sarees/patola_0028/palette_05.png",
+          "data/raw/handloom_sarees/patola_0034/palette_05.png"
+        ],
+        "534712b37cfa28b7be11c374e51c10e1": [
+          "data/raw/handloom_sarees/patola_0028/palette_06.png",
+          "data/raw/handloom_sarees/patola_0034/palette_06.png"
+        ],
+        "9fcbcb4e8d67bc5aecae214d63478237": [
+          "data/raw/handloom_sarees/patola_0028/palette_07.png",
+          "data/raw/handloom_sarees/patola_0034/palette_07.png"
+        ],
+        "739a53b6013f10021bc4f2da04b05509": [
+          "data/raw/handloom_sarees/patola_0039/palette_00.png",
+          "data/raw/handloom_sarees/patola_0047/palette_00.png",
+          "data/raw/handloom_sarees/patola_0048/palette_00.png",
+          "data/raw/handloom_sarees/patola_0057/palette_00.png"
+        ],
+        "83ea8e6424578196a0f051ce6fe8fcf4": [
+          "data/raw/handloom_sarees/patola_0039/palette_01.png",
+          "data/raw/handloom_sarees/patola_0047/palette_01.png",
+          "data/raw/handloom_sarees/patola_0048/palette_01.png",
+          "data/raw/handloom_sarees/patola_0057/palette_01.png"
+        ],
+        "772606db01ceca6d5b527d2f815b9a27": [
+          "data/raw/handloom_sarees/patola_0039/palette_02.png",
+          "data/raw/handloom_sarees/patola_0047/palette_02.png",
+          "data/raw/handloom_sarees/patola_0048/palette_02.png",
+          "data/raw/handloom_sarees/patola_0057/palette_02.png"
+        ],
+        "752a670276dd93f9bd714b33b37d420f": [
+          "data/raw/handloom_sarees/patola_0039/palette_03.png",
+          "data/raw/handloom_sarees/patola_0047/palette_03.png",
+          "data/raw/handloom_sarees/patola_0048/palette_03.png",
+          "data/raw/handloom_sarees/patola_0057/palette_03.png"
+        ],
+        "69a839a661528a2fdd258caf1d89b787": [
+          "data/raw/handloom_sarees/patola_0039/palette_04.png",
+          "data/raw/handloom_sarees/patola_0047/palette_04.png",
+          "data/raw/handloom_sarees/patola_0048/palette_04.png",
+          "data/raw/handloom_sarees/patola_0057/palette_04.png"
+        ],
+        "289a0b523c6701f2fa3deac6e381e109": [
+          "data/raw/handloom_sarees/patola_0039/palette_05.png",
+          "data/raw/handloom_sarees/patola_0047/palette_05.png",
+          "data/raw/handloom_sarees/patola_0048/palette_05.png",
+          "data/raw/handloom_sarees/patola_0057/palette_05.png"
+        ],
+        "99c40250d51f0b5c2c1ff15e7e942bca": [
+          "data/raw/handloom_sarees/patola_0039/palette_06.png",
+          "data/raw/handloom_sarees/patola_0047/palette_06.png",
+          "data/raw/handloom_sarees/patola_0048/palette_06.png",
+          "data/raw/handloom_sarees/patola_0057/palette_06.png"
+        ],
+        "3dbe73e3070a1d4e1fca3dc96598da7e": [
+          "data/raw/handloom_sarees/patola_0039/palette_07.png",
+          "data/raw/handloom_sarees/patola_0047/palette_07.png",
+          "data/raw/handloom_sarees/patola_0048/palette_07.png",
+          "data/raw/handloom_sarees/patola_0057/palette_07.png"
+        ]
+      },
+      "same_content_different_name_cases": 0
+    },
+    "split_leakage_checks": {
+      "train_val_design_overlap_count": 0,
+      "train_val_design_overlap": [],
+      "train_test_design_overlap_count": 0,
+      "train_test_design_overlap": [],
+      "val_test_design_overlap_count": 0,
+      "val_test_design_overlap": [],
+      "train_val_image_md5_overlap_count": 0,
+      "train_test_image_md5_overlap_count": 0
+    },
+    "gallery_query_checks": {
+      "gallery_images_count": 168,
+      "query_images_count": 168,
+      "gallery_query_image_overlap_count": 0,
+      "gallery_query_md5_overlap_count": 0,
+      "gallery_colorways": [
+        "palette_00",
+        "palette_01",
+        "palette_02",
+        "palette_03"
+      ],
+      "query_colorways": [
+        "palette_04",
+        "palette_05",
+        "palette_06",
+        "palette_07"
+      ],
+      "colorway_intersection": [],
+      "colorway_disjoint": true
+    },
+    "augmentation_leakage": {
+      "training_augmentations_on_the_fly": true,
+      "offline_augmented_files_in_dataset": false,
+      "test_images_in_training_pipeline": false
+    },
+    "summary": "Zero data leakage confirmed: Train, Validation, and Test sets have mutually exclusive design IDs. No identical or near-duplicate images span across splits. Gallery and Query sets use strictly disjoint colorways (gallery: palette_00..03, query: palette_04..07) of test designs."
+  },
+  "identification": {
+    "recall@1": 0.9702,
+    "recall@5": 1.0,
+    "recall@10": 1.0,
+    "mAP": 0.8333,
+    "cross_palette_recall@1": 0.994,
+    "cross_palette_recall@5": 1.0,
+    "cross_palette_recall@10": 1.0,
+    "gallery_size": 168,
+    "query_size": 168,
+    "test_images": 336,
+    "test_designs": 42
+  },
+  "latest": {
+    "checkpoint": "C:\\Users\\rravi\\Downloads\\deeplure\\Color-Invariant Saree Design Recognition\\models\\checkpoints\\best_model.pth",
+    "mode": "trained",
+    "backbone": "resnet18",
+    "embedding_dim": 256,
+    "color_mode": "full",
+    "split": "test",
+    "n_images": 336,
+    "n_classes": 42,
+    "identification": {
+      "recall@1": 0.9702,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "mAP": 0.8333
+    },
+    "verification": {
+      "roc_auc": 0.9799,
+      "eer": 0.0489,
+      "eer_threshold": 0.92,
+      "best_f1": 0.9609,
+      "best_f1_threshold": 0.9,
+      "n_pairs": 2352,
+      "n_same": 1176,
+      "n_diff": 1176
+    },
+    "color_invariance": {
+      "cross_recall@1": 0.994,
+      "cross_recall@5": 1.0,
+      "cross_recall@10": 1.0,
+      "color_trap_accuracy": 0.9465,
+      "same_design_diff_color_recall": 0.949,
+      "diff_design_same_color_rejection": 0.944,
+      "mean_perturbed_recall@1": 0.975,
+      "mean_perturbed_recall@5": 0.9982,
+      "mean_perturbed_recall@10": 0.9994,
+      "mean_perturbed_mAP": 0.8819
+    },
+    "efficiency": {
+      "n_params_total": 11571521,
+      "n_params_trainable": 11571521,
+      "embedding_size_bytes": 1024
+    }
+  },
+  "verification": {
+    "roc_auc": 0.9799,
+    "eer": 0.0489,
+    "eer_threshold": 0.92,
+    "best_f1": 0.9609,
+    "best_f1_threshold": 0.9,
+    "n_pairs": 2352,
+    "n_same": 1176,
+    "n_diff": 1176
+  }
+}

@@ -1,0 +1,21 @@
+paths:
+  dataset_raw: "data/raw/handloom_sarees"
+  dataset_processed: "data/processed"
+  gallery: "models/embeddings"
+  models: "models/checkpoints"
+  results: "results"
+
+data:
+  image_extensions: [".jpg", ".jpeg", ".png", ".webp"]
+  n_designs: 60          # designs per tradition
+  n_traditions: 6
+  colorways_per_design: 8
+  total_images: 2880     # 60 * 6 * 8
+  train_split: 0.7
+  val_split: 0.15
+  test_split: 0.15
+  seed: 42
+
+dedup:
+  hash_algorithm: "phash"
+  threshold: 8           # Hamming distance for near-duplicate detection

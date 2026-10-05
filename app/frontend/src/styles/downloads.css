@@ -1,0 +1,50 @@
+/* ============================================================
+   Downloads Styles
+   ============================================================ */
+
+.download-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: var(--clr-surface2);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.download-item:hover {
+  border-color: var(--clr-accent);
+  background: var(--clr-glass-b);
+  transform: translateY(-1px);
+}
+
+.download-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.download-icon {
+  font-size: 1.5rem;
+  color: var(--clr-accent2);
+}
+
+.download-name {
+  font-size: 0.925rem;
+  font-weight: 600;
+  color: var(--clr-text);
+  font-family: var(--font-heading);
+}
+
+.download-size {
+  font-size: 0.78rem;
+  color: var(--clr-text3);
+  margin-top: 0.15rem;
+}
+
+.download-btn {
+  padding: 0.45rem 1rem;
+  font-size: 0.825rem;
+}

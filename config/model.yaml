@@ -1,0 +1,13 @@
+model:
+  backbone: "resnet18"       # resnet18 | resnet50 | efficientnet_b0
+  embedding_dim: 256
+  gem_p: 3.0                 # Generalized Mean pooling exponent
+  freeze_backbone: false
+  pretrained: true           # use ImageNet weights as starting point
+  projection_head: true      # MLP head: backbone_dim -> 512 -> embedding_dim
+  l2_normalize: true         # normalize embeddings to unit sphere
+
+efficiency:
+  total_params: 11_571_521
+  embedding_size_bytes: 1024  # 256 dims * 4 bytes float32
+  backbone_flops_gmac: 1.8

@@ -1,0 +1,18 @@
+project:
+  name: "Color-Invariant Saree Design Recognition"
+  domain: "handloom_sarees"
+  traditions:
+    - ikat
+    - jamdani
+    - banarasi
+    - patola
+    - kanjivaram
+    - chanderi
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+  max_upload_mb: 8
+  cors_origins:
+    - "http://localhost:5173"
+    - "http://127.0.0.1:5173"

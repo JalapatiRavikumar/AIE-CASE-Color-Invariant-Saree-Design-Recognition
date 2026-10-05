@@ -1,0 +1,42 @@
+/* ============================================================
+   DeepLure · Design System Tokens & CSS Custom Properties
+   ============================================================ */
+
+:root {
+  /* Surface & Background */
+  --clr-bg:          #0b0d12;
+  --clr-surface:     #13161e;
+  --clr-surface2:    #1b1f2b;
+  --clr-glass:       rgba(255, 255, 255, 0.04);
+  --clr-glass-b:     rgba(255, 255, 255, 0.08);
+  --clr-border:      rgba(255, 255, 255, 0.08);
+  --clr-border2:     rgba(255, 255, 255, 0.14);
+
+  /* DeepLure Brand Palette */
+  --clr-accent:      #e85d26;     /* DeepLure saffron-orange */
+  --clr-accent2:     #f4a640;     /* Warm gold */
+  --clr-accent-glow: rgba(232, 93, 38, 0.35);
+
+  /* Text & Feedback */
+  --clr-text:        #f0f1f5;
+  --clr-text2:       #9fa3b0;
+  --clr-text3:       #6b7080;
+
+  --clr-success:     #22c55e;
+  --clr-error:       #ef4444;
+  --clr-info:        #60a5fa;
+
+  /* Typography */
+  --font-heading:    'Outfit', sans-serif;
+  --font-body:       'Inter', sans-serif;
+
+  /* Radii */
+  --radius-sm:       8px;
+  --radius:          14px;
+  --radius-lg:       20px;
+  --radius-xl:       28px;
+
+  /* Shadows */
+  --shadow-card:     0 4px 32px rgba(0, 0, 0, 0.45);
+  --shadow-glow:     0 0 28px var(--clr-accent-glow);
+}

@@ -1,0 +1,25 @@
+train:
+  image_size: 224
+  batch_size: 32
+  epochs: 20
+  learning_rate: 1.0e-4
+  weight_decay: 1.0e-4
+  temperature: 0.07          # SupCon loss temperature
+  num_workers: 0             # 0 = main process (Windows compatible)
+  seed: 42
+  color_mode: "full"         # full | grayscale | augmented
+
+loss:
+  type: "supcon"             # supervised contrastive loss
+  positives_per_anchor: 7   # other colorways of same design
+
+augmentation:
+  random_grayscale_p: 0.3
+  color_jitter:
+    brightness: 0.8
+    contrast: 0.8
+    saturation: 0.8
+    hue: 0.2
+  random_hflip_p: 0.5
+  random_rotation_deg: 15
+  palette_swap_p: 0.5        # structure-preserving palette recoloring
