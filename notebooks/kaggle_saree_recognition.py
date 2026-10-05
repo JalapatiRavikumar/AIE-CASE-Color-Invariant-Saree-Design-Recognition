@@ -522,7 +522,11 @@ class GeMPooling(nn.Module):
 class SareeEmbeddingNet(nn.Module):
     def __init__(self, embedding_dim=cfg.EMBEDDING_DIM, pretrained=True):
         super().__init__()
-        base = models.resnet18(weights=models.ResNet18_Weights.DEFAULT if pretrained else None)
+        try:
+            base = models.resnet18(weights=models.ResNet18_Weights.DEFAULT if pretrained else None)
+        except Exception:
+            print('[INFO] Pretrained weights not accessible offline. Initializing ResNet-18 without pre-downloaded weights.')
+            base = models.resnet18(weights=None)
         self.features = nn.Sequential(*list(base.children())[:-2])  # Convolutional stages up to 512 feature maps
         self.pool = GeMPooling(p=cfg.GEM_P)
         self.head = nn.Sequential(
