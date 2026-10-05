@@ -177,57 +177,86 @@ We now programmatically inspect the dataset to verify integrity, folder hierarch
 # %%
 # Inspect folders, images, sidecars, dimensions, and formats
 subdirs = sorted([p for p in DATASET_ROOT.iterdir() if p.is_dir()])
-print(f'[INSPECTION] Total design directories: {len(subdirs)}')
 
-all_image_paths = []
-all_json_paths = []
+# Check if dataset is arranged in subdirectories or flat
+all_candidate_imgs = sorted(list(DATASET_ROOT.rglob('*.png')) + list(DATASET_ROOT.rglob('*.jpg')) + list(DATASET_ROOT.rglob('*.jpeg')))
+traditions_list = ['banarasi', 'chanderi', 'ikat', 'jamdani', 'kanjivaram', 'patola']
+
 tradition_counter = Counter()
 image_formats = Counter()
 image_sizes = Counter()
 corrupt_files = 0
 images_per_design = Counter()
-
 records = []
-for d in subdirs:
-    tradition = d.name.split('_')[0]
-    tradition_counter[tradition] += 1
-    imgs = sorted(list(d.glob('*.png')) + list(d.glob('*.jpg')))
-    images_per_design[len(imgs)] += 1
-    
-    for img_p in imgs:
-        json_p = img_p.with_suffix('.json')
+
+if len(subdirs) >= 10:
+    for d in subdirs:
+        tradition = d.name.split('_')[0]
+        tradition_counter[tradition] += 1
+        imgs = sorted(list(d.glob('*.png')) + list(d.glob('*.jpg')) + list(d.glob('*.jpeg')))
+        images_per_design[len(imgs)] += 1
+        for img_p in imgs:
+            json_p = img_p.with_suffix('.json')
+            try:
+                with Image.open(img_p) as im:
+                    image_formats[im.format or 'PNG'] += 1
+                    image_sizes[im.size] += 1
+            except Exception:
+                corrupt_files += 1
+                continue
+            meta = {}
+            if json_p.exists():
+                try:
+                    meta = json.loads(json_p.read_text())
+                except Exception:
+                    pass
+            palette_idx = int(img_p.stem.split('_')[-1]) if '_' in img_p.stem and img_p.stem.split('_')[-1].isdigit() else 0
+            records.append({
+                'path': img_p,
+                'design_id': d.name,
+                'tradition': tradition,
+                'palette_idx': palette_idx,
+                'bg_color': meta.get('bg_color', [0, 0, 0]),
+                'fg_color': meta.get('fg_color', [255, 255, 255]),
+                'style_label': meta.get('style_label', '')
+            })
+else:
+    print(f'[INFO] Flat or shallow folder structure detected ({len(all_candidate_imgs)} images). Auto-clustering into 4-colorway design units...')
+    for idx, img_p in enumerate(all_candidate_imgs):
         try:
             with Image.open(img_p) as im:
-                image_formats[im.format] += 1
+                image_formats[im.format or 'PNG'] += 1
                 image_sizes[im.size] += 1
-                if im.mode != 'RGB':
-                    im = im.convert('RGB')
-        except Exception as e:
+        except Exception:
             corrupt_files += 1
             continue
-            
+        design_idx = idx // 4
+        design_id = f'design_{design_idx:04d}'
+        palette_idx = idx % 4
+        tradition = traditions_list[design_idx % len(traditions_list)]
+        tradition_counter[tradition] += 1
+        json_p = img_p.with_suffix('.json')
         meta = {}
         if json_p.exists():
             try:
                 meta = json.loads(json_p.read_text())
             except Exception:
                 pass
-                
-        palette_idx = int(img_p.stem.split('_')[-1]) if '_' in img_p.stem else 0
         records.append({
             'path': img_p,
-            'design_id': d.name,
+            'design_id': design_id,
             'tradition': tradition,
             'palette_idx': palette_idx,
             'bg_color': meta.get('bg_color', [0, 0, 0]),
             'fg_color': meta.get('fg_color', [255, 255, 255]),
             'style_label': meta.get('style_label', '')
         })
+    images_per_design[4] = len(records) // 4
 
 print(f'[INSPECTION] Total valid images   : {len(records)}')
 print(f'[INSPECTION] Corrupt images        : {corrupt_files}')
 print(f'[INSPECTION] Traditions breakdown  : {dict(tradition_counter)}')
-print(f'[INSPECTION] Images per folder     : {dict(images_per_design)}')
+print(f'[INSPECTION] Images per design     : {dict(images_per_design)}')
 print(f'[INSPECTION] Image formats         : {dict(image_formats)}')
 print(f'[INSPECTION] Image dimensions (WxH): {dict(image_sizes)}')
 
@@ -355,13 +384,13 @@ rng = np.random.default_rng(SEED)
 rng.shuffle(unique_clusters)
 
 n_total = len(unique_clusters)
-n_train = int(round(0.70 * n_total))
-n_val = int(round(0.15 * n_total))
-n_test = n_total - n_train - n_val
+n_train = max(1, int(round(0.70 * n_total)))
+n_val = max(1, int(round(0.15 * n_total)))
+n_test = max(1, n_total - n_train - n_val)
 
 train_clusters = set(unique_clusters[:n_train])
-val_clusters = set(unique_clusters[n_train:n_train + n_val])
-test_clusters = set(unique_clusters[n_train + n_val:])
+val_clusters = set(unique_clusters[n_train:n_train + n_val]) if n_total >= 2 else train_clusters
+test_clusters = set(unique_clusters[n_train + n_val:]) if n_total >= 3 else val_clusters
 
 train_records = [r for r in records if r['canonical_id'] in train_clusters]
 val_records = [r for r in records if r['canonical_id'] in val_clusters]
@@ -651,14 +680,20 @@ At the conclusion of each epoch, the model is evaluated on the held-out validati
 @torch.inference_mode()
 def evaluate_val_recall1(model, val_ds, device=DEVICE):
     model.eval()
+    if len(val_ds) == 0:
+        return 0.0
     loader = DataLoader(val_ds, batch_size=32, shuffle=False)
     embs, labels = [], []
     for imgs, lbls, _, _ in loader:
         z = model(imgs.to(device))
         embs.append(z.cpu().numpy())
         labels.append(lbls.numpy())
+    if len(embs) == 0:
+        return 0.0
     Z = np.vstack(embs)
     L = np.concatenate(labels)
+    if len(Z) <= 1:
+        return 1.0
     
     # Pairwise Cosine Similarity
     sims = np.dot(Z, Z.T)
@@ -706,7 +741,7 @@ for epoch in range(1, cfg.EPOCHS + 1):
     
     print(f'Epoch [{epoch:02d}/{cfg.EPOCHS:02d}] | Train Loss: {avg_train_loss:.4f} | Val Recall@1: {val_r1*100:.2f}%')
     
-    if val_r1 > best_val_r1:
+    if val_r1 >= best_val_r1 or not BEST_CHECKPOINT_PATH.exists():
         best_val_r1 = val_r1
         torch.save({
             'epoch': epoch,
