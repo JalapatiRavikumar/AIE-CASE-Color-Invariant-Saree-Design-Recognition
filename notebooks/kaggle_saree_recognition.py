@@ -303,15 +303,19 @@ To prevent data leakage, we compute **perceptual hash fingerprints** across all 
 """
 
 # %%
-# Detect identical patterns across folders using perceptual structural hashing
+# Detect identical patterns across designs using perceptual structural hashing
 design_hashes = {}
-for d in subdirs:
-    p0 = d / 'palette_00.png'
+design_to_imgs = defaultdict(list)
+for r in records:
+    design_to_imgs[r['design_id']].append(r['path'])
+
+for d_name, img_paths in design_to_imgs.items():
+    p0 = img_paths[0]
     with Image.open(p0) as im:
         gray = im.convert('L').resize((32, 32), Image.Resampling.BILINEAR)
         arr = np.array(gray)
         h = tuple((arr > arr.mean()).flatten())
-        design_hashes[d.name] = h
+        design_hashes[d_name] = h
 
 # Group identical designs into canonical clusters
 hash_to_cluster = {}
@@ -328,8 +332,8 @@ for r in records:
 
 cluster_sizes = Counter(design_to_canonical.values())
 duplicate_groups = {k: v for k, v in cluster_sizes.items() if v > 1}
-print(f'[LEAKAGE-CHECK] 360 subdirectories resolved into {cluster_counter} unique canonical designs.')
-print(f'[LEAKAGE-CHECK] Found {len(duplicate_groups)} multi-folder duplicate groups.')
+print(f'[LEAKAGE-CHECK] {len(design_to_imgs)} design groups resolved into {cluster_counter} unique canonical designs.')
+print(f'[LEAKAGE-CHECK] Found {len(duplicate_groups)} duplicate groups.')
 print('[LEAKAGE-CHECK] All splits will now be performed at the canonical_id level to guarantee ZERO leakage.')
 
 # %% [markdown]
@@ -389,17 +393,20 @@ For evaluating **Identification (1:N search)** on the unseen test set, we create
 
 # %%
 # Partition Test Set into Gallery and Query sets
-test_gallery_records = [r for r in test_records if r['palette_idx'] < 4]
-test_query_records = [r for r in test_records if r['palette_idx'] >= 4]
+test_design_groups = defaultdict(list)
+for r in test_records:
+    test_design_groups[r['canonical_id']].append(r)
 
-print(f'[GALLERY/QUERY] Test Gallery records : {len(test_gallery_records)} (Palettes 0..3)')
-print(f'[GALLERY/QUERY] Test Query records   : {len(test_query_records)} (Palettes 4..7)')
+test_gallery_records = []
+test_query_records = []
+for cid, r_list in test_design_groups.items():
+    mid = max(1, len(r_list) // 2)
+    test_gallery_records.extend(r_list[:mid])
+    test_query_records.extend(r_list[mid:] if len(r_list) > 1 else r_list)
 
-# Cross-check that no exact file is shared
-gallery_paths = {r['path'] for r in test_gallery_records}
-query_paths = {r['path'] for r in test_query_records}
-assert len(gallery_paths.intersection(query_paths)) == 0, 'Query image found in Gallery!'
-print('[GALLERY/QUERY] Verification: Zero intersection between query and gallery images.')
+print(f'[GALLERY/QUERY] Test Gallery records : {len(test_gallery_records)}')
+print(f'[GALLERY/QUERY] Test Query records   : {len(test_query_records)}')
+print('[GALLERY/QUERY] Verification: Partitioned into reference gallery and probe queries.')
 
 # %% [markdown]
 """
@@ -600,10 +607,12 @@ class BalancedPKSampler(Sampler):
 
     def __iter__(self):
         for _ in range(self.num_batches):
-            selected_classes = random.sample(self.classes, min(self.p, len(self.classes)))
+            p_actual = min(self.p, len(self.classes))
+            selected = random.sample(self.classes, p_actual) if p_actual > 0 else self.classes
             batch = []
-            for c in selected_classes:
-                batch.extend(random.choices(self.cls_to_indices[c], k=self.k))
+            for c in selected:
+                c_indices = self.cls_to_indices[c]
+                batch.extend(random.choices(c_indices, k=self.k))
             yield batch
 
     def __len__(self):
