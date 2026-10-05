@@ -143,26 +143,27 @@ print('='*70)
 """
 
 # %%
-# Dataset Path Resolution with Kaggle & Local Fallback
-POTENTIAL_DATA_PATHS = [
-    Path('/kaggle/input/handloom-sarees'),
-    Path('/kaggle/input/indian-saree-patterns'),
-    Path('/kaggle/input/deeplure-saree'),
-    Path('data/raw/handloom_sarees'),
-    Path('../data/raw/handloom_sarees'),
-    Path('../../data/raw/handloom_sarees'),
-]
-
+# Universal Dataset Auto-Discovery for Kaggle and Local Environments
 DATASET_ROOT = None
-for p in POTENTIAL_DATA_PATHS:
-    if p.exists() and any(p.iterdir()):
-        DATASET_ROOT = p
-        break
+
+# Search inside /kaggle/input for any directory containing saree designs
+kaggle_dir = Path('/kaggle/input')
+if kaggle_dir.exists():
+    for p in sorted(kaggle_dir.rglob('*')):
+        if p.is_dir() and any(p.glob('banarasi_*')):
+            DATASET_ROOT = p
+            break
+
+# Local fallback search
+if DATASET_ROOT is None:
+    for p in [Path('data/raw/handloom_sarees'), Path('../data/raw/handloom_sarees'), Path('../../data/raw/handloom_sarees')]:
+        if p.exists() and any(p.glob('banarasi_*')):
+            DATASET_ROOT = p
+            break
 
 if DATASET_ROOT is None:
-    raise FileNotFoundError(
-        f'Could not locate handloom_sarees dataset in any of the search paths: {[str(p) for p in POTENTIAL_DATA_PATHS]}'
-    )
+    found = list(Path('/kaggle/input').rglob('*')) if Path('/kaggle/input').exists() else []
+    raise FileNotFoundError(f'Could not locate saree designs. Found in /kaggle/input: {found[:10]}')
 
 print(f'[DATASET] Located dataset root at: {DATASET_ROOT.resolve()}')
 
